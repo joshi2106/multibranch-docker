@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t image2 .'
+                sh 'docker build -t image02 .'
             }
         }
         stage ('tag') {
             steps {
-                sh 'docker tag image2 joshi2106/paytm:buses'
+                sh 'docker tag image02 joshi2106/paytm:buses'
             }
         }
         stage('Push') {
