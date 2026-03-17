@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t image1 .'
+                sh 'docker build -t image01 .'
             }
         }
         stage ("Tag") {
             steps {
-                sh 'docker tag image1 joshi2106/paytm:bank'
+                sh 'docker tag image01 joshi2106/paytm:bank'
             }
         }
         stage('push') {
@@ -23,7 +23,7 @@ pipeline {
        }
        stage ("Deploy") {
           steps {
-                sh 'docker run -itd --name bank-app -p 1111:80 joshi2106/paytm:bank'
+                sh 'docker run -itd --name bankapplication  -p 1111:80 joshi2106/paytm:bank'
             }
         }
     }
