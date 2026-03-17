@@ -7,23 +7,23 @@ pipeline {
                 sh 'docker build -t image2 .'
             }
         }
-        stage ("Tag") {
+        stage ('tag') {
             steps {
-                sh 'docker tag image2 shaikmustafa/paytm:bus'
+                sh 'docker tag image2 joshi2106/paytm:bus'
             }
         }
         stage('Push') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub') {
-                        sh 'docker push shaikmustafa/paytm:bus'
+                      sh 'docker push joshi2106/paytm:bus'
                     }
                 }
             }
         }
-        stage ("Deploy") {
+        stage ('deploy') {
             steps {
-                sh 'docker run -itd --name bus-app -p 2222:80 shaikmustafa/paytm:bus'
+                sh 'docker run -itd --name bus-app -p 2222:80 joshi2106/paytm:bus'
             }
         }
     }
